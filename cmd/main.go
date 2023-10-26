@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"os"
 )
 
@@ -21,5 +22,11 @@ func main() {
 		return
 	}
 	defer file.Close()
+	
+	result, err := io.ReadAll(file)
+	if err != nil {
+		panic("IDK")
+	}
 
+	fmt.Printf("%s", string(result))
 }
